@@ -1,45 +1,98 @@
 import * as React from 'react';
-import Helmet from 'react-helmet';
+import {
+  ListPageHeader,
+  ListPageBody,
+  ListPageCreate,
+  VirtualizedTable,
+  useK8sWatchResource,
+  
+  K8sResourceCommon,
+  TableData,
+  RowProps,
+  ResourceLink,
+  ResourceIcon,
+  TableColumn,
+} from '@openshift-console/dynamic-plugin-sdk';
 import { useTranslation } from 'react-i18next';
-import { Page, PageSection, Text, TextContent, Title } from '@patternfly/react-core';
-import { CheckCircleIcon } from '@patternfly/react-icons';
-import './example.css';
 
-export default function ExamplePage() {
-  const { t } = useTranslation('plugin__console-plugin-template');
+type PodsTableProps = {
+  data: K8sResourceCommon[];
+  unfilteredData: K8sResourceCommon[];
+  loaded: boolean;
+  loadError: any;
+};
+
+const PodsTable: React.FC<PodsTableProps> = ({ data, unfilteredData, loaded, loadError }) => {
+  const { t } = useTranslation();
+
+  const columns: TableColumn<K8sResourceCommon>[] = [
+    {
+      title: t('plugin__console-demo-plugin~Name'),
+      id: 'name',
+    },
+    {
+      title: t('plugin__console-demo-plugin~Namespace'),
+      id: 'namespace',
+    },
+  ];
+
+  const PodRow: React.FC<RowProps<K8sResourceCommon>> = ({ obj, activeColumnIDs }) => {
+    return (
+      <>
+        <TableData id={columns[0].id} activeColumnIDs={activeColumnIDs}>
+          <ResourceLink kind="Pod" name={obj.metadata.name} namespace={obj.metadata.namespace} />
+        </TableData>
+        <TableData id={columns[1].id} activeColumnIDs={activeColumnIDs}>
+          <ResourceLink kind="Namespace" name={obj.metadata.namespace} />
+        </TableData>
+      </>
+    );
+  };
+
+  return (
+    <VirtualizedTable<K8sResourceCommon>
+      data={data}
+      unfilteredData={unfilteredData}
+      loaded={loaded}
+      loadError={loadError}
+      columns={columns}
+      Row={PodRow}
+    />
+  );
+};
+const ListPage = () => {
+  const [pods, loaded, loadError] = useK8sWatchResource<K8sResourceCommon[]>({
+    groupVersionKind: {
+      version: 'v1',
+      kind: 'Pod',
+    },
+    namespace:'cnf-certsuite-operator',
+    isList: true,
+    namespaced: true,
+  });
+  const { t } = useTranslation();
+
+
 
   return (
     <>
-      <Helmet>
-        <title data-test="example-page-title">{t('Hello, Plugin!')}</title>
-      </Helmet>
-      <Page>
-        <PageSection variant="light">
-          <Title headingLevel="h1">{t('Hello, Plugin!')}</Title>
-        </PageSection>
-        <PageSection variant="light">
-          <TextContent>
-            <Text component="p">
-              <span className="console-plugin-template__nice">
-                <CheckCircleIcon /> {t('Success!')}
-              </span>{' '}
-              {t('Your plugin is working.')}
-            </Text>
-            <Text component="p">
-              {t(
-                'This is a custom page contributed by the console plugin template. The extension that adds the page is declared in console-extensions.json in the project root along with the corresponding nav item. Update console-extensions.json to change or add extensions. Code references in console-extensions.json must have a corresponding property',
-              )}
-              <code>{t('exposedModules')}</code>{' '}
-              {t('in package.json mapping the reference to the module.')}
-            </Text>
-            <Text component="p">
-              {t('After cloning this project, replace references to')}{' '}
-              <code>{t('console-template-plugin')}</code>{' '}
-              {t('and other plugin metadata in package.json with values for your plugin.')}
-            </Text>
-          </TextContent>
-        </PageSection>
-      </Page>
+      <ListPageHeader title={t('plugin__console-demo-plugin~OpenShift Pods List Page')}>
+        <ListPageCreate groupVersionKind="Pod">{t('plugin__console-demo-plugin~Create Pod')}</ListPageCreate>
+      </ListPageHeader>
+      <ListPageBody>
+        <PodsTable
+           data={pods}
+          unfilteredData={pods}
+          loaded={loaded}
+          loadError={loadError}
+        />
+      </ListPageBody>
+      <ListPageBody>
+        <p>{t('plugin__console-demo-plugin~Sample ResourceIcon')}</p>
+        <ResourceIcon kind="Pod" />
+      </ListPageBody>
     </>
   );
-}
+};
+
+export default ListPage;
