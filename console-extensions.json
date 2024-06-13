@@ -20,7 +20,7 @@
         "kind": "CnfCertificationSuiteRun",
         "version": "v1alpha1"
       },
-      "name": "%plugin__console-plugin-template~Plugin Example%",
+      "name": "%plugin__console-plugin-template~Cnf Certification Suite CRs%",
       "section": "cnf-cert-section"
     },
     "type": "console.navigation/resource-ns"
@@ -37,5 +37,20 @@
       }
     },
     "type": "console.page/resource/list"
+  },
+  {
+    "type": "console.tab/horizontalNav",
+    "properties": {
+      "model": {
+        "group": "cnf-certifications.redhat.com",
+        "kind": "CnfCertificationSuiteRun",
+        "version": "v1alpha1"
+      },
+      "page": {
+        "name": "Results",
+        "href": "results"
+      },
+      "component": { "$codeRef": "NavPage" }
+    }
   }
 ]

@@ -60,7 +60,7 @@ const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps
   );
 };
 
-const ListPage = ({namespace}) => {
+const ListPage = ({namespace,name}) => {
   const { t } = useTranslation();
 
   const [resources, loaded, loadError] = useK8sWatchResource<K8sResourceCommon[]>({
@@ -70,15 +70,27 @@ const ListPage = ({namespace}) => {
       kind: 'CnfCertificationSuiteRun',      
     },
     namespace,
+    name,
     isList: true,
     namespaced: true,
   });
 
   return (
     <>
-      <ListPageHeader title={t('plugin__console-demo-plugin~CnfCertificationSuiteRun List Page')}>
-        <ListPageCreate groupVersionKind={{ group: 'cnf-certifications.redhat.com', version: 'v1alpha1', kind: 'CnfCertificationSuiteRun' }}>
-          {t('plugin__console-demo-plugin~Create CnfCertificationSuiteRun')}
+      <ListPageHeader title={t('plugin__console-demo-plugin~CnfCertificationSuiteRun CRs List')}>
+      <ListPageCreate groupVersionKind={{version: 'v1', kind: 'Secret' }}>
+          {t('plugin__console-demo-plugin~Create a Secret')}
+        </ListPageCreate>
+   
+      </ListPageHeader>
+      <ListPageHeader title={t('')}>
+      <ListPageCreate groupVersionKind={{ group: 'cnf-certifications.redhat.com', version: 'v1alpha1', kind: 'CnfCertificationSuiteRun' }}>
+          {t('plugin__console-demo-plugin~Create a CnfCertificationSuiteRun CR')}
+        </ListPageCreate>
+      </ListPageHeader>
+      <ListPageHeader title={t('')}>
+      <ListPageCreate groupVersionKind={{ version: 'v1', kind: 'ConfigMap' }}>
+          {t('plugin__console-demo-plugin~Create a ConfigMap')}
         </ListPageCreate>
       </ListPageHeader>
       <ListPageBody>
