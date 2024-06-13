@@ -1,23 +1,5 @@
 [
   {
-    "type": "console.page/route",
-    "properties": {
-      "exact": true,
-      "path": "/example",
-      "component": { "$codeRef": "ExamplePage" }
-    }
-  },
-  {
-    "type": "console.navigation/href",
-    "properties": {
-      "id": "example",
-      "name": "%plugin__console-plugin-template~Plugin Example%",
-      "href": "/example",
-      "perspective": "admin",
-      "section": "cnf-cert-section"
-    }
-  },
-  {
     "type": "console.navigation/section",
     "properties": {
       "id": "cnf-cert-section",
@@ -25,5 +7,35 @@
       "perspective": "admin",
       "name": "Cnf Certification Suites"
     }
+  },
+  {
+    "properties": {
+      "dataAttributes": {
+        "data-quickstart-id": "qs-nav-templates",
+        "data-test-id": "templates-nav-item"
+      },
+      "id": "example",
+      "model": {
+        "group": "cnf-certifications.redhat.com",
+        "kind": "CnfCertificationSuiteRun",
+        "version": "v1alpha1"
+      },
+      "name": "%plugin__console-plugin-template~Plugin Example%",
+      "section": "cnf-cert-section"
+    },
+    "type": "console.navigation/resource-ns"
+  },
+  {
+    "properties": {
+      "component": {
+        "$codeRef": "ExamplePage"
+      },
+      "model": {
+        "group": "cnf-certifications.redhat.com",
+        "kind": "CnfCertificationSuiteRun",
+        "version": "v1alpha1"
+      }
+    },
+    "type": "console.page/resource/list"
   }
 ]

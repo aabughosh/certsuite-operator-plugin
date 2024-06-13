@@ -5,7 +5,6 @@ import {
   ListPageCreate,
   VirtualizedTable,
   useK8sWatchResource,
-  
   K8sResourceCommon,
   TableData,
   RowProps,
@@ -15,14 +14,14 @@ import {
 } from '@openshift-console/dynamic-plugin-sdk';
 import { useTranslation } from 'react-i18next';
 
-type PodsTableProps = {
+type CnfCertificationSuiteRunTableProps = {
   data: K8sResourceCommon[];
   unfilteredData: K8sResourceCommon[];
   loaded: boolean;
   loadError: any;
 };
 
-const PodsTable: React.FC<PodsTableProps> = ({ data, unfilteredData, loaded, loadError }) => {
+const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps> = ({ data, unfilteredData, loaded, loadError }) => {
   const { t } = useTranslation();
 
   const columns: TableColumn<K8sResourceCommon>[] = [
@@ -36,11 +35,11 @@ const PodsTable: React.FC<PodsTableProps> = ({ data, unfilteredData, loaded, loa
     },
   ];
 
-  const PodRow: React.FC<RowProps<K8sResourceCommon>> = ({ obj, activeColumnIDs }) => {
+  const CnfCertificationSuiteRunRow: React.FC<RowProps<K8sResourceCommon>> = ({ obj, activeColumnIDs }) => {
     return (
       <>
         <TableData id={columns[0].id} activeColumnIDs={activeColumnIDs}>
-          <ResourceLink kind="Pod" name={obj.metadata.name} namespace={obj.metadata.namespace} />
+          <ResourceLink kind="cnf-certifications.redhat.com~v1alpha1~CnfCertificationSuiteRun" name={obj.metadata.name} namespace={obj.metadata.namespace}  />
         </TableData>
         <TableData id={columns[1].id} activeColumnIDs={activeColumnIDs}>
           <ResourceLink kind="Namespace" name={obj.metadata.namespace} />
@@ -56,40 +55,43 @@ const PodsTable: React.FC<PodsTableProps> = ({ data, unfilteredData, loaded, loa
       loaded={loaded}
       loadError={loadError}
       columns={columns}
-      Row={PodRow}
+      Row={CnfCertificationSuiteRunRow}
     />
   );
 };
-const ListPage = () => {
-  const [pods, loaded, loadError] = useK8sWatchResource<K8sResourceCommon[]>({
+
+const ListPage = ({namespace}) => {
+  const { t } = useTranslation();
+
+  const [resources, loaded, loadError] = useK8sWatchResource<K8sResourceCommon[]>({
     groupVersionKind: {
-      version: 'v1',
-      kind: 'Pod',
+      group: 'cnf-certifications.redhat.com', 
+      version: 'v1alpha1',                         
+      kind: 'CnfCertificationSuiteRun',      
     },
-    namespace:'cnf-certsuite-operator',
+    namespace,
     isList: true,
     namespaced: true,
   });
-  const { t } = useTranslation();
-
-
 
   return (
     <>
-      <ListPageHeader title={t('plugin__console-demo-plugin~OpenShift Pods List Page')}>
-        <ListPageCreate groupVersionKind="Pod">{t('plugin__console-demo-plugin~Create Pod')}</ListPageCreate>
+      <ListPageHeader title={t('plugin__console-demo-plugin~CnfCertificationSuiteRun List Page')}>
+        <ListPageCreate groupVersionKind={{ group: 'cnf-certifications.redhat.com', version: 'v1alpha1', kind: 'CnfCertificationSuiteRun' }}>
+          {t('plugin__console-demo-plugin~Create CnfCertificationSuiteRun')}
+        </ListPageCreate>
       </ListPageHeader>
       <ListPageBody>
-        <PodsTable
-           data={pods}
-          unfilteredData={pods}
+        <CnfCertificationSuiteRunTable
+          data={resources}
+          unfilteredData={resources}
           loaded={loaded}
           loadError={loadError}
         />
       </ListPageBody>
       <ListPageBody>
-        <p>{t('plugin__console-demo-plugin~Sample ResourceIcon')}</p>
-        <ResourceIcon kind="Pod" />
+        <p>{t('plugin__console-demo-plugin~Sample ResourceIcon for CnfCertificationSuiteRun')}</p>
+        <ResourceIcon kind="CnfCertificationSuiteRun" />
       </ListPageBody>
     </>
   );
