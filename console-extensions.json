@@ -20,7 +20,7 @@
         "kind": "CnfCertificationSuiteRun",
         "version": "v1alpha1"
       },
-      "name": "%plugin__console-plugin-template~Cnf Certification Suite CRs%",
+      "name": "%plugin__cnf-certsuite-plugin~Cnf Certification Suite CRs%",
       "section": "cnf-cert-section"
     },
     "type": "console.navigation/resource-ns"
