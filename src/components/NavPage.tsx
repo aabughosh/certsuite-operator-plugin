@@ -121,7 +121,11 @@ const NavPage: React.FC<{ obj: CnfCertificationSuiteRun }> = ({ obj }) => {
 
       <ListPageHeader title={t('Cnf Certification Suite Run Results')} />
       <ListPageBody>
-        <CnfCertificationSuiteRunTable data={activeFilter === 'all' ? obj.status.report.results : filteredResults} loaded loadError={null} />
+      {filteredResults.length === 0 ? (
+          <div className="no-results">{t('No results found for the selected filter')}</div>
+        ) : (
+          <CnfCertificationSuiteRunTable data={filteredResults} loaded loadError={null} />
+        )}
       </ListPageBody>
     </>
   );

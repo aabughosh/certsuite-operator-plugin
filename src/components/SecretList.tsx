@@ -14,14 +14,14 @@ import {
 } from '@openshift-console/dynamic-plugin-sdk';
 import { useTranslation } from 'react-i18next';
 
-type CnfCertificationSuiteRunTableProps = {
+type SecretTableTableProps = {
   data: K8sResourceCommon[];
   unfilteredData: K8sResourceCommon[];
   loaded: boolean;
   loadError: any;
 };
 
-const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps> = ({ data, unfilteredData, loaded, loadError }) => {
+const SecretTable: React.FC<SecretTableTableProps> = ({ data, unfilteredData, loaded, loadError }) => {
   const { t } = useTranslation();
 
   const columns: TableColumn<K8sResourceCommon>[] = [
@@ -30,16 +30,16 @@ const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps
       id: 'name',
     },
     {
-      title: t('plugin__cnf-certsuite-plugin~Namespace'),
+      title: t('plugin__cnf-certsuite-plugin~NameSpace'),
       id: 'namespace',
     },
   ];
 
-  const CnfCertificationSuiteRunRow: React.FC<RowProps<K8sResourceCommon>> = ({ obj, activeColumnIDs }) => {
+  const SecretRow: React.FC<RowProps<K8sResourceCommon>> = ({ obj, activeColumnIDs }) => {
     return (
       <>
         <TableData id={columns[0].id} activeColumnIDs={activeColumnIDs}>
-          <ResourceLink kind="cnf-certifications.redhat.com~v1alpha1~CnfCertificationSuiteRun" name={obj.metadata.name} namespace={obj.metadata.namespace}  />
+          <ResourceLink kind="Secret" name={obj.metadata.name} namespace={obj.metadata.namespace} />
         </TableData>
         <TableData id={columns[1].id} activeColumnIDs={activeColumnIDs}>
           <ResourceLink kind="Namespace" name={obj.metadata.namespace} />
@@ -55,19 +55,18 @@ const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps
       loaded={loaded}
       loadError={loadError}
       columns={columns}
-      Row={CnfCertificationSuiteRunRow}
+      Row={SecretRow}
     />
   );
 };
 
-const ListPage = ({namespace,name}) => {
+const ListSecret = ({namespace,name}) => {
   const { t } = useTranslation();
 
   const [resources, loaded, loadError] = useK8sWatchResource<K8sResourceCommon[]>({
     groupVersionKind: {
-      group: 'cnf-certifications.redhat.com', 
-      version: 'v1alpha1',                         
-      kind: 'CnfCertificationSuiteRun',      
+      version: 'v1',                         
+      kind: 'Secret',      
     },
     namespace,
     name,
@@ -77,16 +76,13 @@ const ListPage = ({namespace,name}) => {
 
   return (
     <>
-      <ListPageHeader title={t('plugin__cnf-certsuite-plugin~CnfCertificationSuiteRun CRs List')}>
-   
-      </ListPageHeader>
-      <ListPageHeader title={t('')}>
-      <ListPageCreate groupVersionKind={{ group: 'cnf-certifications.redhat.com', version: 'v1alpha1', kind: 'CnfCertificationSuiteRun' }}>
-          {t('plugin__cnf-certsuite-plugin~Create a CnfCertificationSuiteRun CR')}
-        </ListPageCreate>
+      <ListPageHeader title={t('plugin__cnf-certsuite-plugin~CnfCertificationSuiteRun Secrets List')}>
+      <ListPageCreate groupVersionKind={{version: 'v1', kind: 'Secret' }}>
+          {t('plugin__cnf-certsuite-plugin~Create a Secret')}
+        </ListPageCreate> 
       </ListPageHeader>
       <ListPageBody>
-        <CnfCertificationSuiteRunTable
+        <SecretTable
           data={resources}
           unfilteredData={resources}
           loaded={loaded}
@@ -94,11 +90,11 @@ const ListPage = ({namespace,name}) => {
         />
       </ListPageBody>
       <ListPageBody>
-        <p>{t('plugin__cnf-certsuite-plugin~Sample ResourceIcon for CnfCertificationSuiteRun')}</p>
-        <ResourceIcon kind="CnfCertificationSuiteRun" />
+        <p>{t('plugin__cnf-certsuite-plugin~Sample ResourceIcon for Secret')}</p>
+        <ResourceIcon kind="Secret" />
       </ListPageBody>
     </>
   );
 };
 
-export default ListPage;
+export default ListSecret;
