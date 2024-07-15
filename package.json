@@ -71,11 +71,11 @@
   "consolePlugin": {
     "name": "cnf-certsuite-plugin",
     "version": "0.0.1",
-    "displayName": "OpenShift Console Plugin Template",
-    "description": "Template project for OpenShift Console plugins. Edit package.json to change this message and the plugin name.",
+    "displayName": "CNF certification test plugin",
+    "description": "This plugin adds CNF certification tests results to the OpenShift web console.",
     "exposedModules": {
-      "ExamplePage": "./components/ExamplePage",
-      "NavPage": "./components/NavPage"
+      "CnfCertsuiteRunPage": "./components/CnfCertsuiteRunPage",
+      "ResultsPage": "./components/ResultsPage"
     },
     "dependencies": {
       "@console/pluginAPI": "*"
