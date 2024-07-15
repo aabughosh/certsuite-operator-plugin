@@ -14,7 +14,7 @@
         "data-quickstart-id": "qs-nav-templates",
         "data-test-id": "templates-nav-item"
       },
-      "id": "example",
+      "id": "cnfCertificationSuiteRuns",
       "model": {
         "group": "cnf-certifications.redhat.com",
         "kind": "CnfCertificationSuiteRun",
@@ -28,7 +28,7 @@
   {
     "properties": {
       "component": {
-        "$codeRef": "ExamplePage"
+        "$codeRef": "CnfCertsuiteRunPage"
       },
       "model": {
         "group": "cnf-certifications.redhat.com",
@@ -50,7 +50,7 @@
         "name": "Results",
         "href": "results"
       },
-      "component": { "$codeRef": "NavPage" }
+      "component": { "$codeRef": "ResultsPage" }
     }
   },  
   {
@@ -59,7 +59,7 @@
         "data-quickstart-id": "qs-nav-templates",
         "data-test-id": "templates-nav-item"
       },
-      "id": "example2",
+      "id": "secrets",
       "model": {
         "kind": "Secret",
         "version": "v1"
@@ -76,7 +76,7 @@
         "data-quickstart-id": "qs-nav-templates",
         "data-test-id": "templates-nav-item"
       },
-      "id": "example3",
+      "id": "configMaps",
       "model": {
         "kind": "ConfigMap",
         "version": "v1"

@@ -80,7 +80,7 @@ const CnfCertificationSuiteRunTable: React.FC<{ data: Results[]; loaded: boolean
   />
 );
 
-const NavPage: React.FC<{ obj: CnfCertificationSuiteRun }> = ({ obj }) => {
+const ResultsPage: React.FC<{ obj: CnfCertificationSuiteRun }> = ({ obj }) => {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = React.useState<string>('all'); // Default to showing all results
 
@@ -131,4 +131,4 @@ const NavPage: React.FC<{ obj: CnfCertificationSuiteRun }> = ({ obj }) => {
   );
 };
 
-export default NavPage;
+export default ResultsPage;

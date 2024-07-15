@@ -1,8 +1,8 @@
 // src/plugin.ts
-import NavPage from './NavPage';
-import ExamplePage from './ExamplePage';
+import ResultsPage from './ResultsPage';
+import CnfCertsuiteRunPage from './CnfCertsuiteRunPage';
 
 export const plugin = {
-  examplePage: ExamplePage,
-  navPage: NavPage,
+  cnfCertsuiteRunPage: CnfCertsuiteRunPage,
+  resultsPage: ResultsPage,
 };
