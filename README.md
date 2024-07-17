@@ -9,7 +9,7 @@ The `CNF certsuite plugin` is an
 [openshift dynamic console plugin](https://github.com/openshift/console/tree/master/frontend/packages/console-dynamic-plugin-sdk)
 extending the [OpenShift UI](https://github.com/openshift/console).
 
-This console plugin allows the possibilities to run the
+This console plugin allows the possibility to run the
 [CNF certification suites](https://github.com/test-network-function/cnf-certification-test)
 and review their results using the openshift console.
 
@@ -52,8 +52,11 @@ You can add the required resources detailed
 [here](https://github.com/test-network-function/cnf-certsuite-operator?tab=readme-ov-file#how-to-customize-the-cnf-certification-suite-run),
 by navigating to the corresponding tabs and using the `create` option.
 
-The CNF certification test results will appear under the 
-`CNF certification Suite CR's` corresponding to the created cnf certification run CR name. see example:
+The CNF certification test results will appear under the
+`CNF certification Suite CR's` corresponding to the created
+cnf certification run CR name.
+
+See example:
 
 ![cnfCertificationSuiteRun-CR-list](doc/cnfCertificationSuiteRun-CR-list.png)
 
