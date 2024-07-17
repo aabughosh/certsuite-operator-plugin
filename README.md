@@ -52,12 +52,13 @@ You can add the required resources detailed
 [here](https://github.com/test-network-function/cnf-certsuite-operator?tab=readme-ov-file#how-to-customize-the-cnf-certification-suite-run),
 by navigating to the corresponding tabs and using the `create` option.
 
-The CNF certification test results will appear under the
-`CNF certification Suite CR's` tab under `Results`,
-corresponding to the created cnf certification run CR name.
-
-See example:
+The CNF certification test results will appear under the 
+`CNF certification Suite CR's` corresponding to the created cnf certification run CR name. see example:
 
 ![cnfCertificationSuiteRun-CR-list](doc/cnfCertificationSuiteRun-CR-list.png)
+
+Under the `Results` tab you can find the CNF certification suites results.
+
+See example:
 
 ![cnfCertificationSuiteRun-results](doc/cnfCertificationSuiteRun-results.png)
