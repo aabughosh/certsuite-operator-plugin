@@ -1,4 +1,4 @@
-# CNF Certification Suite console plugin
+# CNF Certification Suite Operator's Console Plugin
 
 [![red hat](https://img.shields.io/badge/red%20hat---?color=gray&logo=redhat&logoColor=red&style=flat)](https://www.redhat.com)
 [![openshift](https://img.shields.io/badge/openshift---?color=gray&logo=redhatopenshift&logoColor=red&style=flat)](https://www.redhat.com/en/technologies/cloud-computing/openshift)
@@ -7,7 +7,8 @@
 
 The `CNF certsuite plugin` is an
 [openshift dynamic console plugin](https://github.com/openshift/console/tree/master/frontend/packages/console-dynamic-plugin-sdk)
-extending the [OpenShift UI](https://github.com/openshift/console).
+extending the [OpenShift UI](https://github.com/openshift/console)
+for the CNF Certification Suite Operator.
 
 This console plugin allows the possibility to run the
 [CNF certification suites](https://github.com/test-network-function/cnf-certification-test)
