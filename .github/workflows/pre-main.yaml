@@ -47,10 +47,10 @@ jobs:
       - name: Shfmt
         run: shfmt -d *.sh
 
-    #   - name: Markdownlint
-    #     uses: nosborn/github-action-markdown-cli@v3.3.0
-    #     with:
-    #       files: .
+      - name: Markdownlint
+        uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
 
       - name: Typos
         uses: crate-ci/typos@master
