@@ -29,7 +29,7 @@ After installing the `CNF certification operator`, you might need to enable the 
 
 In this case the plugin should be automatically enabled.
 If not, You can enable the plugin by navigating from `Operators` →
-`Installed Operators` → `cnf-certsuite-operator`.
+`Installed Operators` → `certsuite-operator`.
 There, check the `Console plugin` checkbox as `Enabled` and refresh the page.
 
 ### Option 2: Operator was manually deployed
@@ -38,7 +38,7 @@ In this case the plugin is not automatically enabled.
 You can enable the plugin by navigating from
 `Administration` → `Cluster Settings` → `Configuration` →
 `Console operator.openshift.io` → `Console plugins`,
-and manually enabling the `cnf-certsuite-plugin`.
+and manually enabling the `certsuite-operator-plugin`.
 
 ## Using the plugin
 

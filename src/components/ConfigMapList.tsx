@@ -26,11 +26,11 @@ const ConfigMapTable: React.FC<ConfigMapTableTableProps> = ({ data, unfilteredDa
 
   const columns: TableColumn<K8sResourceCommon>[] = [
     {
-      title: t('plugin__cnf-certsuite-plugin~Name'),
+      title: t('plugin__certsuite-operator-plugin~Name'),
       id: 'name',
     },
     {
-        title: t('plugin__cnf-certsuite-plugin~NameSpace'),
+        title: t('plugin__certsuite-operator-plugin~NameSpace'),
         id: 'namespace',
       },
   
@@ -77,9 +77,9 @@ const ListConfigMap = ({namespace,name}) => {
 
   return (
     <>
-      <ListPageHeader title={t('plugin__cnf-certsuite-plugin~CnfCertificationSuiteRun ConfigMap List')}>
+      <ListPageHeader title={t('plugin__certsuite-operator-plugin~CnfCertificationSuiteRun ConfigMap List')}>
       <ListPageCreate groupVersionKind={{version: 'v1', kind: 'ConfigMap' }}>
-          {t('plugin__cnf-certsuite-plugin~Create a ConfigMap')}
+          {t('plugin__certsuite-operator-plugin~Create a ConfigMap')}
         </ListPageCreate> 
       </ListPageHeader>
       <ListPageBody>
@@ -91,7 +91,7 @@ const ListConfigMap = ({namespace,name}) => {
         />
       </ListPageBody>
       <ListPageBody>
-        <p>{t('plugin__cnf-certsuite-plugin~Sample ResourceIcon for ConfigMap')}</p>
+        <p>{t('plugin__certsuite-operator-plugin~Sample ResourceIcon for ConfigMap')}</p>
         <ResourceIcon kind="ConfigMap" />
       </ListPageBody>
     </>

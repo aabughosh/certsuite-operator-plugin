@@ -9,7 +9,7 @@ module.exports = {
   locales: ['en'],
   namespaceSeparator: '~',
   reactNamespace: false,
-  defaultNamespace: 'plugin__cnf-certsuite-plugin',
+  defaultNamespace: 'plugin__certsuite-operator-plugin',
   useKeysAsDefaultValue: true,
 
   // see below for more details
