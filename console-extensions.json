@@ -20,7 +20,7 @@
         "kind": "CnfCertificationSuiteRun",
         "version": "v1alpha1"
       },
-      "name": "%plugin__cnf-certsuite-plugin~Cnf Certification Suite CRs%",
+      "name": "%plugin__certsuite-operator-plugin~Cnf Certification Suite CRs%",
       "section": "cnf-cert-section"
     },
     "type": "console.navigation/resource-ns"
@@ -64,7 +64,7 @@
         "kind": "Secret",
         "version": "v1"
       },
-      "name": "%plugin__cnf-certsuite-plugin~Secrets%",
+      "name": "%plugin__certsuite-operator-plugin~Secrets%",
       "section": "cnf-cert-section"
     },
     "type": "console.navigation/resource-ns"
@@ -81,7 +81,7 @@
         "kind": "ConfigMap",
         "version": "v1"
       },
-      "name": "%plugin__cnf-certsuite-plugin~ConfigMap%",
+      "name": "%plugin__certsuite-operator-plugin~ConfigMap%",
       "section": "cnf-cert-section"
     },
     "type": "console.navigation/resource-ns"

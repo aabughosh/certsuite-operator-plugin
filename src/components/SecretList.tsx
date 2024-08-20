@@ -26,11 +26,11 @@ const SecretTable: React.FC<SecretTableTableProps> = ({ data, unfilteredData, lo
 
   const columns: TableColumn<K8sResourceCommon>[] = [
     {
-      title: t('plugin__cnf-certsuite-plugin~Name'),
+      title: t('plugin__certsuite-operator-plugin~Name'),
       id: 'name',
     },
     {
-      title: t('plugin__cnf-certsuite-plugin~NameSpace'),
+      title: t('plugin__certsuite-operator-plugin~NameSpace'),
       id: 'namespace',
     },
   ];
@@ -76,9 +76,9 @@ const ListSecret = ({namespace,name}) => {
 
   return (
     <>
-      <ListPageHeader title={t('plugin__cnf-certsuite-plugin~CnfCertificationSuiteRun Secrets List')}>
+      <ListPageHeader title={t('plugin__certsuite-operator-plugin~CnfCertificationSuiteRun Secrets List')}>
       <ListPageCreate groupVersionKind={{version: 'v1', kind: 'Secret' }}>
-          {t('plugin__cnf-certsuite-plugin~Create a Secret')}
+          {t('plugin__certsuite-operator-plugin~Create a Secret')}
         </ListPageCreate> 
       </ListPageHeader>
       <ListPageBody>
@@ -90,7 +90,7 @@ const ListSecret = ({namespace,name}) => {
         />
       </ListPageBody>
       <ListPageBody>
-        <p>{t('plugin__cnf-certsuite-plugin~Sample ResourceIcon for Secret')}</p>
+        <p>{t('plugin__certsuite-operator-plugin~Sample ResourceIcon for Secret')}</p>
         <ResourceIcon kind="Secret" />
       </ListPageBody>
     </>

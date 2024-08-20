@@ -26,11 +26,11 @@ const CnfCertificationSuiteRunTable: React.FC<CnfCertificationSuiteRunTableProps
 
   const columns: TableColumn<K8sResourceCommon>[] = [
     {
-      title: t('plugin__cnf-certsuite-plugin~Name'),
+      title: t('plugin__certsuite-operator-plugin~Name'),
       id: 'name',
     },
     {
-      title: t('plugin__cnf-certsuite-plugin~Namespace'),
+      title: t('plugin__certsuite-operator-plugin~Namespace'),
       id: 'namespace',
     },
   ];
@@ -77,12 +77,12 @@ const ListPage = ({namespace,name}) => {
 
   return (
     <>
-      <ListPageHeader title={t('plugin__cnf-certsuite-plugin~CnfCertificationSuiteRun CRs List')}>
+      <ListPageHeader title={t('plugin__certsuite-operator-plugin~CnfCertificationSuiteRun CRs List')}>
    
       </ListPageHeader>
       <ListPageHeader title={t('')}>
       <ListPageCreate groupVersionKind={{ group: 'cnf-certifications.redhat.com', version: 'v1alpha1', kind: 'CnfCertificationSuiteRun' }}>
-          {t('plugin__cnf-certsuite-plugin~Create a CnfCertificationSuiteRun CR')}
+          {t('plugin__certsuite-operator-plugin~Create a CnfCertificationSuiteRun CR')}
         </ListPageCreate>
       </ListPageHeader>
       <ListPageBody>
@@ -94,7 +94,7 @@ const ListPage = ({namespace,name}) => {
         />
       </ListPageBody>
       <ListPageBody>
-        <p>{t('plugin__cnf-certsuite-plugin~Sample ResourceIcon for CnfCertificationSuiteRun')}</p>
+        <p>{t('plugin__certsuite-operator-plugin~Sample ResourceIcon for CnfCertificationSuiteRun')}</p>
         <ResourceIcon kind="CnfCertificationSuiteRun" />
       </ListPageBody>
     </>

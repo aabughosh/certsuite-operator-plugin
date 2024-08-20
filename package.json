@@ -1,5 +1,5 @@
 {
-  "name": "cnf-certsuite-plugin",
+  "name": "certsuite-operator-plugin",
   "version": "0.0.1",
   "description": "Template project for OpenShift Console plugins",
   "private": true,
@@ -69,10 +69,10 @@
     "webpack-dev-server": "^4.7.4"
   },
   "consolePlugin": {
-    "name": "cnf-certsuite-plugin",
+    "name": "certsuite-operator-plugin",
     "version": "0.0.1",
     "displayName": "CNF certification test plugin",
-    "description": "This plugin adds CNF certification tests results to the OpenShift web console.",
+    "description": "This plugin adds Red Hat best practices for Kubernetes tests suites results to the OpenShift web console.",
     "exposedModules": {
       "CnfCertsuiteRunPage": "./components/CnfCertsuiteRunPage",
       "ResultsPage": "./components/ResultsPage"

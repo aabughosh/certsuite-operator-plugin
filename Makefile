@@ -1,4 +1,4 @@
-IMG?=cnf-certsuite-plugin
+IMG?=certsuite-operator-plugin
 BASH_SCRIPTS=$(shell find . -name "*.sh" -not -path "./.git/*")
 
 .PHONY: docker-build
